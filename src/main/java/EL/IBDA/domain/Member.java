@@ -3,10 +3,12 @@ package EL.IBDA.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Table(name = "member")
@@ -20,14 +22,11 @@ public class Member {
 
     private String email;
 
+    private String address;
+
     @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
 
-    @Builder
-    public Member(String nickname, String email, OAuthProvider oAuthProvider) {
-        this.nickname = nickname;
-        this.email = email;
-        this.oAuthProvider = oAuthProvider;
-    }
+
 }
 

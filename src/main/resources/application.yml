@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://0.0.0.0:0000/IBDA
-    username: hi
-    password: password
+    url: jdbc:mysql://ibda.ckp1zzcl50yl.us-east-1.rds.amazonaws.com:3306/IBDA
+    username: youngwoo
+    password: Owe3589!
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

@@ -24,4 +24,5 @@ public class Product {
     private Long price;
 
     private Long count;
+
 }

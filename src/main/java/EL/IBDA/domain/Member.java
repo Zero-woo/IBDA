@@ -25,6 +25,5 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
 
-
 }
 

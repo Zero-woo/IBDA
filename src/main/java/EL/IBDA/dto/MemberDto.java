@@ -15,4 +15,5 @@ public class MemberDto {
         email = member.getEmail();
         address = getAddress();
     }
+
 }

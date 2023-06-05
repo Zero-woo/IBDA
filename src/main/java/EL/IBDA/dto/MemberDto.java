@@ -6,12 +6,12 @@ import lombok.Data;
 @Data
 public class MemberDto {
 
-    private Long id;
+    private String nickname;
     private String email;
     private String address;
 
     public MemberDto(Member member) {
-        id = member.getId();
+        nickname = member.getNickname();
         email = member.getEmail();
         address = getAddress();
     }

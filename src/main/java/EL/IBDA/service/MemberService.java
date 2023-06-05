@@ -22,8 +22,8 @@ public class MemberService {
     }
 
     @Transactional
-    public void deleteMember(String id) {
-        Member member = findMemberById(id);
+    public void deleteMember(String email) {
+        Member member = findMemberByEmail(email);
         memberRepository.delete(member);
     }
 
@@ -31,8 +31,8 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member findMemberById(String id) {
-        Optional<Member> findMember = memberRepository.findById(id);
+    public Member findMemberByEmail(String email) {
+        Optional<Member> findMember = memberRepository.findByEmail(email);
         return findMember.orElseThrow(() -> new IllegalStateException("없는 회원입니다."));
     }
 
@@ -44,8 +44,8 @@ public class MemberService {
     }
 
     @Transactional
-    public void changeEmail(String id, String email) {
-        Member member = findMemberById(id);
+    public void changeEmail(String email) {
+        Member member = findMemberByEmail(email);
         member.setEmail(email);
     }
 

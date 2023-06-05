@@ -28,7 +28,7 @@ public class MemberController {
         return members;
     }
 
-    @Operation(summary = "아이디, 비밀번호, 이메일, 주소만 조회")
+    @Operation(summary = "닉네임, 이메일, 주소만 조회")
     @GetMapping("/members2")
     public List<MemberDto> list2() {
         List<Member> members = memberService.findMembers();
@@ -38,11 +38,11 @@ public class MemberController {
         return result;
     }
 
-    @Operation(summary = "회원 조회",description = "아이디로 회원 조회하기")
-    @Parameter(name="memberid",description = "아이디",example = "user01")
-    @GetMapping("/member/{memberid}")
-    public Member findMember(@PathVariable("memberid") String memberId) {
-        Member member = memberService.findMemberById(memberId);
+    @Operation(summary = "회원 조회",description = "이메일로 회원 조회하기")
+    @Parameter(name="email",description = "이메일",example = "IBDA@naver.com")
+    @GetMapping("/member/{memberEmail}")
+    public Member findMember(@PathVariable("memberEmail") String memberEmail) {
+        Member member = memberService.findMemberByEmail(memberEmail);
         return member;
     }
 
@@ -52,22 +52,17 @@ public class MemberController {
         memberService.saveMember(member);
     }
 
-    @Operation(summary = "회원 삭제", description = "아이디로 회원 삭제하기")
-    @Parameter(name="memberid", description = "아이디")
-    @DeleteMapping("/member/{memberid}")
-    public void deleteMember(@PathVariable("memberid") @Valid String memberId) {
-        memberService.deleteMember(memberId);
+    @Operation(summary = "회원 삭제", description = "이메일로 회원 삭제하기")
+    @Parameter(name="memberEmail", description = "이메일")
+    @DeleteMapping("/member/{memberEmail}")
+    public void deleteMember(@PathVariable("memberEmail") @Valid String memberEmail) {
+        memberService.deleteMember(memberEmail);
     }
 
-    @Operation(summary = "이메일 변경", description = "이메일 변경하기")
-    @PostMapping("/member/{memberId}/email")
-    public void changeEmail(@PathVariable("memberId") String memberId, @RequestBody EmailDTO emailDTO){
-        String email = emailDTO.getEmail();
-        memberService.changeEmail(memberId, email);
-    }
+//    @Operation(summary = "이메일 변경", description = "이메일 변경하기")
+//    @PostMapping("/member/{memberEmail}")
+//    public void changeEmail(@PathVariable("memberEmail") String memberEmail){
+//        memberService.changeEmail(memberEmail);
+//    }
 
-    @Data
-    static class EmailDTO{
-        private String email;
-    }
 }

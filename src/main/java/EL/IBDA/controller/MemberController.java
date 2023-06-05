@@ -28,15 +28,15 @@ public class MemberController {
         return members;
     }
 
-    @Operation(summary = "닉네임, 이메일, 주소만 조회")
-    @GetMapping("/members2")
-    public List<MemberDto> list2() {
-        List<Member> members = memberService.findMembers();
-        List<MemberDto> result = members.stream()
-                .map(o -> new MemberDto(o))
-                .collect(Collectors.toList());
-        return result;
-    }
+//    @Operation(summary = "닉네임, 이메일, 주소만 조회")
+//    @GetMapping("/members2")
+//    public List<MemberDto> list2() {
+//        List<Member> members = memberService.findMembers();
+//        List<MemberDto> result = members.stream()
+//                .map(o -> new MemberDto(o))
+//                .collect(Collectors.toList());
+//        return result;
+//    }
 
     @Operation(summary = "회원 조회",description = "이메일로 회원 조회하기")
     @Parameter(name="email",description = "이메일",example = "IBDA@naver.com")

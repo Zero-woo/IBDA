@@ -27,7 +27,6 @@ public class ProductService {
         productRepository.delete(product);
     }
 
-
     public Product findProductByName(String productName) {
         Optional<Product> findProduct = productRepository.findByName(productName);
         return findProduct.orElseThrow(() -> new IllegalStateException("없는 상품입니다."));
@@ -36,8 +35,5 @@ public class ProductService {
     public List<Product> findProducts() {
         return productRepository.findAll();
     }
-
-
-
 
 }
